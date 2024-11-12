@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    # Program Sederhana To-Do List
+
+def display_menu():
+    print("\n==== My To-Do List ====")
+    print("1. Tampilkan To-Do List")
+    print("2. Tambahkan tugas")
+    print("3. Hapus tugas")
+    print("4. Keluar")
+    print("=======================")
+
+def show_todo_list(todo_list):
+    if len(todo_list) == 0:
+        print("\nTo-Do List kosong.")
+    else:
+        print("\nTugas dalam To-Do List:")
+        for idx, task in enumerate(todo_list, start=1):
+            print(f"{idx}. {task}")
+
+def add_task(todo_list):
+    task = input("Masukkan tugas baru: ")
+    todo_list.append(task)
+    print(f"Tugas '{task}' ditambahkan ke dalam To-Do List.")
+
+def remove_task(todo_list):
+    show_todo_list(todo_list)
+    if len(todo_list) == 0:
+        return
+    try:
+        task_num = int(input("\nMasukkan nomor tugas yang ingin dihapus: "))
+        if 1 <= task_num <= len(todo_list):
+            removed_task = todo_list.pop(task_num - 1)
+            print(f"Tugas '{removed_task}' dihapus dari To-Do List.")
+        else:
+            print("Nomor tugas tidak valid.")
+    except ValueError:
+        print("Input tidak valid. Masukkan nomor tugas.")
+
+def main():
+    todo_list = []
+    while True:
+        display_menu()
+        choice = input("Pilih opsi (1/2/3/4): ")
+        
+        if choice == "1":
+            show_todo_list(todo_list)
+        elif choice == "2":
+            add_task(todo_list)
+        elif choice == "3":
+            remove_task(todo_list)
+        elif choice == "4":
+            print("Terima kasih telah menggunakan My To-Do List. Sampai jumpa!")
+            break
+        else:
+            print("Opsi tidak valid, silakan coba lagi.")
+
+if __name__ == "__main__":
+    main()
+
+
+    
+</body>
+</html>
+
